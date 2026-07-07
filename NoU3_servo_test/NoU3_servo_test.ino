@@ -65,7 +65,7 @@ void setup() {
     servoVal[i] = 90;
   }
 
-  delay(1000);
+  delay(5000);
   Serial.println("Welcome to the nou3 servo tester https://github.com/joshua-8/NoU3_servo_test");
   Serial.println("select which servo to control using a, s, d, or f");
   Serial.println("enter angles between 0 and 100 degrees");
