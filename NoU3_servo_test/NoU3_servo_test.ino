@@ -101,6 +101,7 @@ void loop() {
       Serial.print("servo ");
       Serial.print(whichServoIsSelected);
       Serial.println(" selected");
+      break;
     }
 
     if (isDigit(inChar)) {
