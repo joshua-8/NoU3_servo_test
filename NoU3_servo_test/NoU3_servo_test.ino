@@ -14,10 +14,6 @@
 
 #include <Alfredo_NoU3.h>
 
-const byte NUM_SERVOS = 4;
-
-int servoVal[NUM_SERVOS];
-
 String inString = "";
 
 int whichServoIsSelected = 0;
@@ -50,7 +46,7 @@ bool writeServoNumber(int servoNumber, int servoAngle) {
     case 4:
       servo4.write(servoAngle);
       break;
-  default: // not a valid servo
+    default: // not a valid servo
       return false;
   }
   return true;
@@ -59,11 +55,6 @@ bool writeServoNumber(int servoNumber, int servoAngle) {
 void setup() {
   NoU3.begin();
   Serial.begin(115200);
-
-  // initialize values
-  for (int i = 0; i < NUM_SERVOS; i++) {
-    servoVal[i] = 90;
-  }
 
   delay(5000);
   Serial.println("Welcome to the nou3 servo tester https://github.com/joshua-8/NoU3_servo_test");
@@ -101,13 +92,13 @@ void loop() {
       Serial.print("servo ");
       Serial.print(whichServoIsSelected);
       Serial.println(" selected");
-      break;
+      inString = "";
     }
 
     if (isDigit(inChar)) {
       inString += (char)inChar;
     }
-    if (inChar == '\n') {
+    if (inChar == '\n' && inString.length() > 0) {
       int inputValue = inString.toInt();
       if (inputValue >= 0 && inputValue <= 180) {
         if (writeServoNumber(whichServoIsSelected, inputValue)) {
