@@ -22,7 +22,7 @@ make sure your serial monitor is set to add newlines to each sent message, and i
 make sure you have installed the Alfredo NoU3 library https://github.com/AlfredoSystems/Alfredo-NoU3/tree/main and selected the Alfredo NoU3 board in Arduino
 
 
-### exampmle
+### example
 
 type a then press enter to select servo 1
 
