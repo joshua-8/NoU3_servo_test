@@ -6,7 +6,9 @@
    The NoU3 documentation and tutorials can be found at https://alfredo-nou3.readthedocs.io/
 
     User Manual:
-
+        select which servo to control using a, s, d, or f
+        enter angles between 0 and 100 degrees
+        make sure your serial monitor is set to add newlines to each sent message, and is 115200 baud
 
 */
 
@@ -34,7 +36,7 @@ NoU_Servo servo2(2);
 NoU_Servo servo3(3);
 NoU_Servo servo4(4);
 
-void writeServoNumber(int servoNumber, int servoAngle) {
+bool writeServoNumber(int servoNumber, int servoAngle) {
   switch (servoNumber) {
     case 1:
       servo1.write(servoAngle);
@@ -48,7 +50,10 @@ void writeServoNumber(int servoNumber, int servoAngle) {
     case 4:
       servo4.write(servoAngle);
       break;
+  default: // not a valid servo
+      return false;
   }
+  return true;
 }
 
 void setup() {
@@ -104,12 +109,17 @@ void loop() {
     if (inChar == '\n') {
       int inputValue = inString.toInt();
       if (inputValue >= 0 && inputValue <= 180) {
-        writeServoNumber(whichServoIsSelected, inputValue);
-        Serial.print("setting servo ");
-        Serial.print(whichServoIsSelected);
-        Serial.print(" to ");
-        Serial.print(inputValue);
-        Serial.println(" degrees");
+        if (writeServoNumber(whichServoIsSelected, inputValue)) {
+          Serial.print("setting servo ");
+          Serial.print(whichServoIsSelected);
+          Serial.print(" to ");
+          Serial.print(inputValue);
+          Serial.println(" degrees");
+        } else {
+          Serial.print(" servo ");
+          Serial.print(whichServoIsSelected);
+          Serial.println(" is not a valid servo");
+        }
       }
       inString = "";
     }
