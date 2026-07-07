@@ -20,3 +20,16 @@ enter angles between 0 and 100 degrees
 make sure your serial monitor is set to add newlines to each sent message, and is 115200 baud
 
 make sure you have installed the Alfredo NoU3 library https://github.com/AlfredoSystems/Alfredo-NoU3/tree/main and selected the Alfredo NoU3 board in Arduino
+
+
+### exampmle
+
+type a then press enter to select servo 1
+
+type 80 then press enter to make servo 1 move to 80 degrees
+
+type 120 then press enter to make servo 1 move to 120 degrees
+
+type s then press enter to select servo 2
+
+type 180 then press enter to make servo 1 move to 180 degrees
