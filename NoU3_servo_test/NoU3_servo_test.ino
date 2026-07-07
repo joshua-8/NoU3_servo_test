@@ -116,7 +116,7 @@ void loop() {
           Serial.print(inputValue);
           Serial.println(" degrees");
         } else {
-          Serial.print(" servo ");
+          Serial.print("servo ");
           Serial.print(whichServoIsSelected);
           Serial.println(" is not a valid servo");
         }
